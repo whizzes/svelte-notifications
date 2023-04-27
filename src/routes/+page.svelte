@@ -1,3 +1,16 @@
-<h1>Welcome to your library project</h1>
-<p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+  import { NotificationList, notifications } from '$lib';
+
+  const success = () => {
+    notifications.notifySuccess('Hello World!' + new Date());
+  };
+</script>
+
+<button on:click={success}> Append Success </button>
+
+<NotificationList let:notification>
+  <li>
+    <strong>{notification.title}</strong>
+    <p>{notification.message}</p>
+  </li>
+</NotificationList>
