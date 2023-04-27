@@ -8,17 +8,29 @@
   let notificationsList: INotification[] = [];
 
   enum Position {
-    TOP_RIGHT = 'top-right',
-    TOP_LEFT = 'top-left',
-    BOTTOM_RIGHT = 'bottom-right',
-    BOTTOM_LEFT = 'bottom-left'
+    TopRight = 'top_right',
+    TopLeft = 'top_left',
+    BottomRight = 'bottom_right',
+    BottomLeft = 'bottom_left'
   }
 
-  export let position:
-    | 'top-right'
-    | 'top-left'
-    | 'bottom-right'
-    | 'bottom-left' = 'top-right';
+  export let position: Position = Position.TopRight;
+
+  // function for get the classes for position of notification list
+  function getPositionClasses() {
+    switch (position) {
+      case Position.TopRight:
+        return 'top-6 right-6';
+      case Position.TopLeft:
+        return 'top-6 left-6';
+      case Position.BottomRight:
+        return 'bottom-6 right-6';
+      case Position.BottomLeft:
+        return 'bottom-6 left-6';
+      default:
+        return 'top-6 right-6';
+    }
+  }
 
   // Use auto-subscriptions to avoid leaking memory on re-renders
   // Refer: https://svelte.dev/tutorial/auto-subscriptions
@@ -30,16 +42,8 @@
 </script>
 
 <ul
-  class="fixed p-6 space-y-4 overflow-y-auto max-h-[calc(100vh-54px)]"
+  class={`fixed p-6 space-y-4 overflow-y-auto max-h-[calc(100vh-54px)] ${getPositionClasses()}`}
   class:z-10={notificationsList?.length}
-  class:top-0={position === Position.TOP_RIGHT ||
-    position === Position.TOP_LEFT}
-  class:bottom-0={position === Position.BOTTOM_RIGHT ||
-    position === Position.BOTTOM_LEFT}
-  class:right-0={position === Position.TOP_RIGHT ||
-    position === Position.BOTTOM_RIGHT}
-  class:left-0={position === Position.TOP_LEFT ||
-    position === Position.BOTTOM_LEFT}
 >
   {#each notificationsList as notification}
     <slot {notification} />
