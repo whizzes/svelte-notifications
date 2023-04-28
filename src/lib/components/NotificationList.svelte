@@ -14,10 +14,9 @@
     BottomLeft = 'bottom_left'
   }
 
-  export let position: Position = Position.TopRight;
+  export let position: Position;
 
-  // function for get the classes for position of notification list
-  function getPositionClasses() {
+  export function getPositionClasses(position: Position = Position.TopRight) {
     switch (position) {
       case Position.TopRight:
         return 'top-6 right-6';
@@ -42,7 +41,9 @@
 </script>
 
 <ul
-  class={`fixed p-6 space-y-4 overflow-y-auto max-h-[calc(100vh-54px)] ${getPositionClasses()}`}
+  class={`fixed p-6 space-y-4 overflow-y-auto max-h-[calc(100vh-54px)] ${getPositionClasses(
+    position
+  )}`}
   class:z-10={notificationsList?.length}
 >
   {#each notificationsList as notification}
