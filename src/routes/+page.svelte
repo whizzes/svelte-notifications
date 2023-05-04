@@ -8,8 +8,7 @@
 
 <button on:click={success}> Append Success </button>
 
-<!-- use position prop to change the position of the notification list -->
-<NotificationList position={Position.BottomRight} let:notification>
+<NotificationList let:notification>
   <li>
     <strong>{notification.title}</strong>
     <p>{notification.message}</p>

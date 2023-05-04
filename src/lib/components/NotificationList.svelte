@@ -1,3 +1,27 @@
+<script lang="ts" context="module">
+  export enum Position {
+    TopRight = 'top_right',
+    TopLeft = 'top_left',
+    BottomRight = 'bottom_right',
+    BottomLeft = 'bottom_left'
+  }
+
+  export function getPositionClasses(position: Position = Position.TopRight) {
+    switch (position) {
+      case Position.TopRight:
+        return 'top-6 right-6';
+      case Position.TopLeft:
+        return 'top-6 left-6';
+      case Position.BottomRight:
+        return 'bottom-6 right-6';
+      case Position.BottomLeft:
+        return 'bottom-6 left-6';
+      default:
+        return 'top-6 right-6';
+    }
+  }
+</script>
+
 <script lang="ts">
   import { onDestroy } from 'svelte';
 
@@ -15,21 +39,6 @@
   }
 
   export let position: Position;
-
-  export function getPositionClasses(position: Position = Position.TopRight) {
-    switch (position) {
-      case Position.TopRight:
-        return 'top-6 right-6';
-      case Position.TopLeft:
-        return 'top-6 left-6';
-      case Position.BottomRight:
-        return 'bottom-6 right-6';
-      case Position.BottomLeft:
-        return 'bottom-6 left-6';
-      default:
-        return 'top-6 right-6';
-    }
-  }
 
   // Use auto-subscriptions to avoid leaking memory on re-renders
   // Refer: https://svelte.dev/tutorial/auto-subscriptions
