@@ -16,6 +16,87 @@
 
 </div>
 
+## Getting Started
+
+To use the Svelte Notifications library in your Svelte application, you can install it using npm:
+
+```bash
+npm install @whizzes/svelte-notifications
+```
+
+## Example
+
+```html
+<script lang="ts">
+  import { NotificationList, notifications, Position } from '@whizzes/svelte-notifications';
+
+  const success = () => {
+    notifications.notifySuccess('Hello World!');
+  };
+</script>
+
+<button on:click={success}>Append Success</button>
+
+<!-- Notifications provider -->
+<NotificationList position={Position.BottomRight} let:notification>
+  <li>
+    <strong>{notification.title}</strong>
+    <p>{notification.message}</p>
+  </li>
+</NotificationList>
+```
+
+## Usage
+
+Import the `NotificationList` component and use [Svelte's Slot Props](https://svelte.dev/tutorial/slot-props) to
+consume a Notification's data.
+
+```javascript
+import { NotificationList, notifications } from '@whizzes/svelte-notifications';
+```
+
+### Provide the NotificationList component
+
+The NotificationList component is the container of the notifications. It should be placed at the layout of your application, so it can be visible in all the pages.
+
+You can set the position of the notifications by passing the `position` prop to the NotificationList component. The available positions are the following using the `Position` enum:
+
+- `Position.TopLeft`
+- `Position.TopCenter`
+- `Position.TopRight`
+- `Position.BottomLeft`
+
+```html
+<script>
+  import { NotificationList, Position } from '@whizzes/svelte-notifications';
+</script>
+
+<NotificationList position={Position.BottomRight} let:notification>
+  <!-- Your notifications template -->
+  <li>
+    <strong>{notification.title}</strong>
+    <p>{notification.message}</p>
+  </li>
+</NotificationList>
+
+```
+
+### Push a notification
+
+To add a notification, you can use some of the methods available in the `notifications` object.
+
+```javascript
+import { notifications } from '@whizzes/svelte-notifications';
+
+// Add a success notification
+notifications.notifySuccess('Hello World!');
+// Add an error notification
+notifications.notifyError('Hello World!');
+// Add a warning notification
+notifications.notifyWarning('Hello World!');
+
+```
+
 ## Development
 
 ```bash
