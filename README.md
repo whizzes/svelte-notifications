@@ -24,9 +24,32 @@ To use the Svelte Notifications library in your Svelte application, you can inst
 npm install @whizzes/svelte-notifications
 ```
 
+## Example
+
+```html
+<script lang="ts">
+  import { NotificationList, notifications, Position } from '@whizzes/svelte-notifications';
+
+  const success = () => {
+    notifications.notifySuccess('Hello World!');
+  };
+</script>
+
+<button on:click={success}>Append Success</button>
+
+<!-- Notifications provider -->
+<NotificationList position={Position.BottomRight} let:notification>
+  <li>
+    <strong>{notification.title}</strong>
+    <p>{notification.message}</p>
+  </li>
+</NotificationList>
+```
+
 ## Usage
 
-Then, you can import the NotificationList and the notification into your component and start using it.
+Import the `NotificationList` component and use [Svelte's Slot Props](https://svelte.dev/tutorial/slot-props) to
+consume a Notification's data.
 
 ```javascript
 import { NotificationList, notifications } from '@whizzes/svelte-notifications';
@@ -45,7 +68,7 @@ You can set the position of the notifications by passing the `position` prop to 
 
 ```html
 <script>
-  import { NotificationList, notifications, Position } from '@whizzes/svelte-notifications';
+  import { NotificationList, Position } from '@whizzes/svelte-notifications';
 </script>
 
 <NotificationList position={Position.BottomRight} let:notification>
@@ -58,7 +81,7 @@ You can set the position of the notifications by passing the `position` prop to 
 
 ```
 
-### Add a notification
+### Push a notification
 
 To add a notification, you can use some of the methods available in the `notifications` object.
 
@@ -71,35 +94,7 @@ notifications.notifySuccess('Hello World!');
 notifications.notifyError('Hello World!');
 // Add a warning notification
 notifications.notifyWarning('Hello World!');
-// Add an info notification
-notifications.notifyInfo('Hello World!');
-```
 
-arguments:
-
-0. message: string
-1. title?: string
-
-### Example
-
-```html
-<script lang="ts">
-  import { NotificationList, notifications, Position } from '$lib';
-
-  const success = () => {
-    notifications.notifySuccess('Hello World!');
-  };
-</script>
-
-<button on:click={success}>Append Success</button>
-
-<!-- use position prop to change the position of the notification list -->
-<NotificationList position={Position.BottomRight} let:notification>
-  <li>
-    <strong>{notification.title}</strong>
-    <p>{notification.message}</p>
-  </li>
-</NotificationList>
 ```
 
 ## Development
