@@ -31,14 +31,7 @@
 
   let notificationsList: INotification[] = [];
 
-  enum Position {
-    TopRight = 'top_right',
-    TopLeft = 'top_left',
-    BottomRight = 'bottom_right',
-    BottomLeft = 'bottom_left'
-  }
-
-  export let position: Position;
+  export let position: Position = Position.TopRight;
 
   // Use auto-subscriptions to avoid leaking memory on re-renders
   // Refer: https://svelte.dev/tutorial/auto-subscriptions
