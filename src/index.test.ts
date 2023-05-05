@@ -1,9 +1,45 @@
 import { describe, it, expect } from 'vitest';
-
-import {
+import { render } from '@testing-library/svelte';
+import { JSDOM } from 'jsdom';
+import NotificationList, {
   getPositionClasses,
   Position
 } from './lib/components/NotificationList.svelte';
+
+const dom = new JSDOM();
+global.window = dom.window;
+global.document = dom.window.document;
+
+describe('NotificationList', () => {
+  it('renders correctly with TopRight position', () => {
+    const { container } = render(NotificationList, {
+      position: Position.TopRight
+    });
+    expect(container.querySelector('.top-6.right-6')).not.toBeNull();
+  });
+
+  it('renders correctly with TopLeft position', () => {
+    const { container } = render(NotificationList, {
+      position: Position.TopLeft
+    });
+    expect(container.querySelector('.top-6.left-6')).not.toBeNull();
+  });
+
+  it('renders correctly with BottomRight position', () => {
+    const { container } = render(NotificationList, {
+      position: Position.BottomRight
+    });
+    expect(container.querySelector('.bottom-6.right-6')).not.toBeNull();
+  });
+
+  it('renders correctly with BottomLeft position', () => {
+    const { container } = render(NotificationList, {
+      position: Position.BottomLeft
+    });
+
+    expect(container.querySelector('.bottom-6.left-6')).not.toBeNull();
+  });
+});
 
 describe('getPositionClasses', () => {
   it('returns the correct classes for TopRight position', () => {
