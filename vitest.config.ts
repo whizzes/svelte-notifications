@@ -5,8 +5,7 @@ export default defineConfig({
   plugins: [svelte()],
   test: {
     globals: true,
-    environment: 'jsdom',
-    watch: true
+    environment: 'jsdom'
   },
   resolve: {
     alias: {
