@@ -1,20 +1,10 @@
-<script lang="ts">
-  import { onDestroy } from 'svelte';
-
-  import notification from '$lib/stores/notifications';
-
-  import type { Notification as INotification } from '$lib/stores/notifications';
-
-  let notificationsList: INotification[] = [];
-
-  enum Position {
+<script lang="ts" context="module">
+  export enum Position {
     TopRight = 'top_right',
     TopLeft = 'top_left',
     BottomRight = 'bottom_right',
     BottomLeft = 'bottom_left'
   }
-
-  export let position: Position;
 
   export function getPositionClasses(position: Position = Position.TopRight) {
     switch (position) {
@@ -30,6 +20,18 @@
         return 'top-6 right-6';
     }
   }
+</script>
+
+<script lang="ts">
+  import { onDestroy } from 'svelte';
+
+  import notification from '$lib/stores/notifications';
+
+  import type { Notification as INotification } from '$lib/stores/notifications';
+
+  let notificationsList: INotification[] = [];
+
+  export let position: Position = Position.TopRight;
 
   // Use auto-subscriptions to avoid leaking memory on re-renders
   // Refer: https://svelte.dev/tutorial/auto-subscriptions
