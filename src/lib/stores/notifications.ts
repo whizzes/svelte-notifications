@@ -15,9 +15,9 @@ export type NotificationStore = {
 };
 
 export enum NotificationKind {
-  Failure,
-  Success,
-  Warning
+  Failure = 'Failure',
+  Success = 'Success',
+  Warning = 'Warning'
 }
 
 export type Notification = {
