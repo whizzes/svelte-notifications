@@ -28,17 +28,21 @@ npm install @whizzes/svelte-notifications
 
 ```html
 <script lang="ts">
-  import { NotificationList, notifications, Position } from '@whizzes/svelte-notifications';
+  import {
+    NotificationList,
+    notifications,
+    Position
+  } from '@whizzes/svelte-notifications';
 
   const success = () => {
     notifications.notifySuccess('Hello World!');
   };
 </script>
 
-<button on:click={success}>Append Success</button>
+<button on:click="{success}">Append Success</button>
 
 <!-- Notifications provider -->
-<NotificationList position={Position.BottomRight} let:notification>
+<NotificationList position="{Position.BottomRight}" let:notification>
   <li>
     <strong>{notification.title}</strong>
     <p>{notification.message}</p>
@@ -71,14 +75,13 @@ You can set the position of the notifications by passing the `position` prop to 
   import { NotificationList, Position } from '@whizzes/svelte-notifications';
 </script>
 
-<NotificationList position={Position.BottomRight} let:notification>
+<NotificationList position="{Position.BottomRight}" let:notification>
   <!-- Your notifications template -->
   <li>
     <strong>{notification.title}</strong>
     <p>{notification.message}</p>
   </li>
 </NotificationList>
-
 ```
 
 ### Push a notification
@@ -94,7 +97,6 @@ notifications.notifySuccess('Hello World!');
 notifications.notifyError('Hello World!');
 // Add a warning notification
 notifications.notifyWarning('Hello World!');
-
 ```
 
 ## Development
@@ -107,3 +109,7 @@ npm run dev
 ```
 
 ## Contributing
+
+Feel free to open pull requests or issues on [our GitHub Repository][1].
+
+[1]: https://github.com/whizzes/svelte-notifications
