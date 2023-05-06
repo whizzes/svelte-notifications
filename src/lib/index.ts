@@ -1,4 +1,7 @@
-export { default as NotificationList } from '$lib/components/NotificationList.svelte';
+export {
+  default as NotificationList,
+  Position
+} from '$lib/components/NotificationList.svelte';
 
 export {
   default as notifications,
