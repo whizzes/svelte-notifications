@@ -51,3 +51,12 @@ describe('getPositionClasses', () => {
     expect(getPositionClasses(Position.BottomLeft)).toBe('bottom-6 left-6');
   });
 });
+
+describe('Custom Classes', () => {
+  it('renders correctly with custom class', () => {
+    const { container } = render(NotificationList, {
+      class: 'custom-class'
+    });
+    expect(container.querySelector('.custom-class')).not.toBeNull();
+  });
+});

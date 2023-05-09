@@ -31,6 +31,10 @@
 
   let notificationsList: INotification[] = [];
 
+  // custom class  props for the notification list
+  let className = '';
+  export { className as class };
+
   export let position: Position = Position.TopRight;
 
   // Use auto-subscriptions to avoid leaking memory on re-renders
@@ -43,7 +47,7 @@
 </script>
 
 <ul
-  class={`fixed p-6 space-y-4 overflow-y-auto max-h-[calc(100vh-54px)] ${getPositionClasses(
+  class={`fixed p-6 space-y-4 overflow-y-auto max-h-[calc(100vh-54px)] ${className} ${getPositionClasses(
     position
   )}`}
   class:z-10={notificationsList?.length}
