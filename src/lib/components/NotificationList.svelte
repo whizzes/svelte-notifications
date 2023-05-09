@@ -31,7 +31,6 @@
 
   let notificationsList: INotification[] = [];
 
-  // custom class  props for the notification list
   let className = '';
   export { className as class };
 
