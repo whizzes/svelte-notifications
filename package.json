@@ -10,8 +10,9 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "test": "vitest",
-    "lint": "prettier --plugin-search-dir . --check . && eslint .",
-    "format": "prettier --plugin-search-dir . --write ."
+    "lint": "rome format ./src && rome check ./src",
+    "format": "rome format --write ./src && rome check --apply ./src",
+    "format:unsafe": "rome format --write ./src && rome check --apply-unsafe ./src"
   },
   "exports": {
     ".": {
@@ -32,14 +33,8 @@
     "@sveltejs/kit": "^1.19.0",
     "@sveltejs/package": "^2.0.0",
     "@testing-library/svelte": "^3.2.2",
-    "@typescript-eslint/eslint-plugin": "^5.59.7",
-    "@typescript-eslint/parser": "^5.45.0",
-    "eslint": "^8.41.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-svelte": "^2.26.0",
+    "rome": "12.1.2",
     "jsdom": "^22.0.0",
-    "prettier": "^2.8.0",
-    "prettier-plugin-svelte": "^2.8.1",
     "publint": "^0.1.9",
     "svelte": "^3.59.1",
     "svelte-check": "^3.3.2",
