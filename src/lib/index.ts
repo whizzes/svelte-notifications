@@ -1,15 +1,15 @@
 export {
   default as NotificationList,
-  Position
+  Position,
 } from '$lib/components/NotificationList.svelte';
 
 export {
   default as notifications,
-  NotificationKind
+  NotificationKind,
 } from '$lib/stores/notifications';
 
 export type {
   Notification,
   NotificationStoreMethods,
-  NotificationStore
+  NotificationStore,
 } from '$lib/stores/notifications';

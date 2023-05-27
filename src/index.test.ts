@@ -3,34 +3,34 @@ import { render } from '@testing-library/svelte';
 
 import NotificationList, {
   getPositionClasses,
-  Position
+  Position,
 } from './lib/components/NotificationList.svelte';
 
 describe('NotificationList', () => {
   it('renders correctly with TopRight position', () => {
     const { container } = render(NotificationList, {
-      position: Position.TopRight
+      position: Position.TopRight,
     });
     expect(container.querySelector('.top-6.right-6')).not.toBeNull();
   });
 
   it('renders correctly with TopLeft position', () => {
     const { container } = render(NotificationList, {
-      position: Position.TopLeft
+      position: Position.TopLeft,
     });
     expect(container.querySelector('.top-6.left-6')).not.toBeNull();
   });
 
   it('renders correctly with BottomRight position', () => {
     const { container } = render(NotificationList, {
-      position: Position.BottomRight
+      position: Position.BottomRight,
     });
     expect(container.querySelector('.bottom-6.right-6')).not.toBeNull();
   });
 
   it('renders correctly with BottomLeft position', () => {
     const { container } = render(NotificationList, {
-      position: Position.BottomLeft
+      position: Position.BottomLeft,
     });
 
     expect(container.querySelector('.bottom-6.left-6')).not.toBeNull();
@@ -55,7 +55,7 @@ describe('getPositionClasses', () => {
 describe('Custom Classes', () => {
   it('renders correctly with custom class', () => {
     const { container } = render(NotificationList, {
-      class: 'custom-class'
+      class: 'custom-class',
     });
     expect(container.querySelector('.custom-class')).not.toBeNull();
   });
