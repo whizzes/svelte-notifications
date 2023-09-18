@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^2.1.0",
-    "@sveltejs/kit": "^1.22.3",
+    "@sveltejs/kit": "^1.25.0",
     "@sveltejs/package": "^2.2.1",
     "@testing-library/svelte": "^4.0.3",
     "rome": "12.1.3",
