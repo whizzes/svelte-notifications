@@ -3,21 +3,21 @@
     TopRight = 'top_right',
     TopLeft = 'top_left',
     BottomRight = 'bottom_right',
-    BottomLeft = 'bottom_left'
+    BottomLeft = 'bottom_left',
   }
 
   export function getPositionClasses(position: Position = Position.TopRight) {
     switch (position) {
       case Position.TopRight:
-        return 'top-6 right-6';
+        return 'position-top-right';
       case Position.TopLeft:
-        return 'top-6 left-6';
+        return 'position-top-left';
       case Position.BottomRight:
-        return 'bottom-6 right-6';
+        return 'position-bottom-right';
       case Position.BottomLeft:
-        return 'bottom-6 left-6';
+        return 'position-bottom-left';
       default:
-        return 'top-6 right-6';
+        return 'position-top-right';
     }
   }
 </script>
@@ -46,12 +46,47 @@
 </script>
 
 <ul
-  class={`fixed p-6 space-y-4 overflow-y-auto max-h-[calc(100vh-54px)] ${className} ${getPositionClasses(
-    position
-  )}`}
-  class:z-10={notificationsList?.length}
+  class={` ${className} ${getPositionClasses(position)}`}
+  class:z-index={notificationsList?.length}
 >
   {#each notificationsList as notification}
     <slot {notification} />
   {/each}
 </ul>
+
+<style>
+  .notification-list {
+    position: fixed;
+    padding: 6px;
+    overflow-y: auto;
+    max-height: calc(100vh - 54px);
+  }
+
+  .z-index {
+    z-index: 50;
+  }
+
+  .position-top-right {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+  }
+
+  .position-top-left {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+  }
+
+  .position-bottom-right {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+  }
+
+  .position-bottom-left {
+    position: absolute;
+    bottom: 6px;
+    left: 6px;
+  }
+</style>
