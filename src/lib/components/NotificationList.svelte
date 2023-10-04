@@ -3,7 +3,7 @@
     TopRight = 'top_right',
     TopLeft = 'top_left',
     BottomRight = 'bottom_right',
-    BottomLeft = 'bottom_left'
+    BottomLeft = 'bottom_left',
   }
 
   export function getPositionClasses(position: Position = Position.TopRight) {
@@ -34,6 +34,8 @@
   let className = '';
   export { className as class };
 
+  export let style: string = '';
+
   export let position: Position = Position.TopRight;
 
   // Use auto-subscriptions to avoid leaking memory on re-renders
@@ -50,6 +52,7 @@
     position
   )}`}
   class:z-10={notificationsList?.length}
+  {style}
 >
   {#each notificationsList as notification}
     <slot {notification} />
