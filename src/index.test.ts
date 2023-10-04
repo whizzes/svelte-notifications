@@ -12,7 +12,6 @@ describe('NotificationList', () => {
       position: Position.TopRight,
     });
     expect(container.querySelector('.position-top-right')).not.toBeNull();
-    exp;
   });
 
   it('renders correctly with TopLeft position', () => {
