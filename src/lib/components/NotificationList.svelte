@@ -34,6 +34,8 @@
   let className = '';
   export { className as class };
 
+  export let style: string = '';
+
   export let position: Position = Position.TopRight;
 
   // Use auto-subscriptions to avoid leaking memory on re-renders
@@ -48,6 +50,7 @@
 <ul
   class={` ${className} ${getPositionClasses(position)}`}
   class:z-index={notificationsList?.length}
+  {style}
 >
   {#each notificationsList as notification}
     <slot {notification} />
