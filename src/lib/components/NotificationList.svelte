@@ -5,21 +5,6 @@
     BottomRight = 'bottom_right',
     BottomLeft = 'bottom_left',
   }
-
-  export function getPositionClasses(position: Position = Position.TopRight) {
-    switch (position) {
-      case Position.TopRight:
-        return 'position-top-right';
-      case Position.TopLeft:
-        return 'position-top-left';
-      case Position.BottomRight:
-        return 'position-bottom-right';
-      case Position.BottomLeft:
-        return 'position-bottom-left';
-      default:
-        return 'position-top-right';
-    }
-  }
 </script>
 
 <script lang="ts">
@@ -48,7 +33,11 @@
 </script>
 
 <ul
-  class={` ${className} ${getPositionClasses(position)}`}
+  class={className}
+  class:position-top-right={position === Position.TopRight}
+  class:position-top-left={position === Position.TopLeft}
+  class:position-bottom-right={position === Position.BottomRight}
+  class:position-bottom-left={position === Position.BottomLeft}
   class:z-index={notificationsList?.length}
   {style}
 >
