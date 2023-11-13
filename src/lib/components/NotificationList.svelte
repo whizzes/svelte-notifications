@@ -9,15 +9,15 @@
   export function getPositionClasses(position: Position = Position.TopRight) {
     switch (position) {
       case Position.TopRight:
-        return 'top-6 right-6';
+        return 'position-top-right';
       case Position.TopLeft:
-        return 'top-6 left-6';
+        return 'position-top-left';
       case Position.BottomRight:
-        return 'bottom-6 right-6';
+        return 'position-bottom-right';
       case Position.BottomLeft:
-        return 'bottom-6 left-6';
+        return 'position-bottom-left';
       default:
-        return 'top-6 right-6';
+        return 'position-top-right';
     }
   }
 </script>
